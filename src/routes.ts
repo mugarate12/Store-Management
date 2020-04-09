@@ -1,21 +1,10 @@
 import { Router } from 'express'
-import { getConnection } from 'typeorm'
-import { Item } from './database/entity/Item'
+
+import { ItemController } from './controllers/itemController'
 
 const routes = Router()
 
 // declaro minhas rotas
-routes.get('/', async (req, res) => {
-  const item = new Item()
-  item.marca = 'marca'
-  item.codigo = '123456'
-  item.produto = 'produto'
-  item.quantidade = 2
-  item.tipo = 'tipo'
-  item.observacao = 'observacao'
-
-  const itemSaved = await getConnection().manager.save(item)
-  res.json(itemSaved)
-})
+routes.post('/item', new ItemController().create)
 
 export default routes

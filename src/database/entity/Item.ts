@@ -1,25 +1,37 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn
+} from 'typeorm'
 
 @Entity()
 export class Item {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  marca: string;
+  marca!: string;
 
   @Column()
-  codigo: string;
+  codigo!: string;
 
   @Column()
-  produto: string;
+  produto!: string;
 
   @Column()
-  quantidade: number;
+  quantidade!: number;
 
   @Column()
-  tipo: string;
+  tipo!: string;
 
   @Column()
-  observacao: string;
+  observacao!: string;
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 }
