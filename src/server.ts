@@ -1,7 +1,10 @@
-import app from './app';
+import app from './app'
+import { createConnection } from 'typeorm'
 
-app.listen(3333, () => {
-
-  console.log('Listening on port 3333');
-
-});
+createConnection()
+  .then(connection => {
+    app.listen(3333, () => {
+      console.log('\nListening on port 3333')
+    })
+  })
+  .catch(error => console.log(error))
