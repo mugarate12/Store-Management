@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import 'reflect-metadata'
+import { errors } from 'celebrate'
 import routes from './routes'
 
 class App {
@@ -12,9 +13,10 @@ class App {
   }
 
   private middlewares (): void {
-    this.express.use(express.json())
     this.express.use(cors())
+    this.express.use(express.json())
     this.express.use(routes)
+    this.express.use(errors())
   }
 }
 
